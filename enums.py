@@ -1,3 +1,5 @@
+"""Standardize important values."""
+
 from enum import Enum
 
 class State(str, Enum):

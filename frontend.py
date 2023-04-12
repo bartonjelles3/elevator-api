@@ -3,7 +3,7 @@
 from flask import Flask, request, jsonify
 
 import elevator_interface
-from utils import Status
+from enums import Status
 
 app = Flask(__name__)
 

@@ -8,7 +8,7 @@ import time
 import random
 import logging
 
-from utils import State, Direction
+from enums import State, Direction
 
 # Use a DB. 
 elevator_attrs = {
@@ -68,6 +68,7 @@ def await_elevator(elevator):
   return True
     
 def elevator_issue(elevator):
+  """Handle elevator malfunctions."""
   # Very rudimentary. Use Datadog, etc. for alerting in this situation.
   # Or hire somebody to monitor logs 24/7. :p (wait that's us)
   logging.error(f"Elevator {elevator} has experienced a malfunction. Current "

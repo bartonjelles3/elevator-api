@@ -1,13 +1,13 @@
 """Elevator control interface."""
 
 import elevator_logic
-from utils import State, Status
+from enums import State, Status
 
 ELEVATOR_ATTRS = elevator_logic.elevator_attrs
 
 def call_and_wait(floor):
-  """Call the elevator. If there's a malfunction via await_elevator, call 
-  again. Await elev"""
+  """Call the elevator and wait for arrival. If there's a malfunction via 
+  await_elevator, call again."""
   arrived = False
   while not arrived:
     elevator = elevator_logic.choose_elevator(floor)
@@ -17,6 +17,7 @@ def call_and_wait(floor):
   return Status.SUCCESS
 
 def dest_and_wait(currentElevator, floor):
+  "Set elevator destination and wait for arrival or failure."
   # Could maybe be combined with call_elevator.
   ELEVATOR_ATTRS[currentElevator]["destination_floor"] = floor
   ELEVATOR_ATTRS[currentElevator]["state"] = State.MOVING
